@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   post '/math/ransum', to: 'math#post_ransum'
   get '/math/duplicatecounter', to:'math#get_duplicatecounter'
   post '/math/duplicatecounter', to:'math#post_duplicatecounter'
+  get '/math/getstockprice', to:'math#get_stockprice'
+  post '/math/getstockprice', to:'math#post_stockprice'
 end

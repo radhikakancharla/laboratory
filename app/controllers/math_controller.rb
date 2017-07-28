@@ -1,3 +1,4 @@
+
 class MathController < ApplicationController
     def root
         @orig = params[:x].to_i
@@ -38,6 +39,15 @@ class MathController < ApplicationController
         #binding.pry
         
         render'duplicatecounter'
+    end
+    def get_stockprice
+        render 'getstockprice'
+    end
+    def post_stockprice
+        stock =  params[:stock].upcase
+        result= HTTParty.get("https://www.google.com/finance/getprices?q=#{stock}&x=NASD&i=120&p=15m&f=c&df=cpct").body  
+        @price = result.split("\n").last.to_f.round(2) 
+        render 'getstockprice'
     end
 end
 
